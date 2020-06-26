@@ -1,4 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { PostService } from 'src/app/services/post.service';
+
+import { Category } from '../../models/category'
 
 @Component({
   selector: 'app-add-post',
@@ -7,26 +11,63 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class AddPostComponent implements OnInit {
 
+  categories:Category[];
+
   @Output() addPost: EventEmitter<any> = new EventEmitter();
 
   title: string;
   image: any;
   caption: string;
-  category: string;
+  category: number;
+  PostForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb:FormBuilder, private postService:PostService) { }
+
+  
 
   ngOnInit(): void {
+
+    this.postService.getCategories().subscribe(categories => {
+      this.categories = categories;
+    });
+
+    this.PostForm = new FormGroup({
+      title: new FormControl('',[Validators.required]),
+      file: new FormControl('',[Validators.required]),
+      fileSource: new FormControl('', [Validators.required]),
+      content: new FormControl('',[Validators.required]),
+      category: new FormControl('',[Validators.required]),
+      author: new FormControl('1',[Validators.required]),
+    })
+    
   }
-  onSubmit(){
-    const post ={
-      title: this.title,
-      image: this.image,
-      caption: this.caption,
-      category: this.category,
+
+  get f(){
+    return this.PostForm.controls;
+  }
+
+  onFileChange(event) {
+  
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.PostForm.patchValue({
+        fileSource: file
+      });
     }
+  }
 
-    this.addPost.emit(post);
+  onSubmit(){
+    const post = this.PostForm.value
+    console.log(post)
 
+    const formData = new FormData();
+    formData.append('file', this.PostForm.get('fileSource').value);
+
+    this.postService.addPost(post).subscribe((data)=>{
+      console.log(data)
+    },
+    (error)=>{
+      console.log(error)
+    })
   }
 }

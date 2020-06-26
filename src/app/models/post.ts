@@ -3,5 +3,5 @@ export class Post {
     title: string;
     image: ImageData;
     caption: string;
-    category: string;
+    category: number;
 }
