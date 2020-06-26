@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+import { UcWidgetModule } from 'ngx-uploadcare-widget';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -35,6 +37,7 @@ import { PostComponent } from './components/post/post.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    UcWidgetModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
