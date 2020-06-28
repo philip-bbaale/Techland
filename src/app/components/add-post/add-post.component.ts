@@ -13,6 +13,7 @@ export class AddPostComponent implements OnInit {
 
   categories:Category[];
 
+
   @Output() addPost: EventEmitter<any> = new EventEmitter();
 
   title: string;
@@ -37,7 +38,7 @@ export class AddPostComponent implements OnInit {
       fileSource: new FormControl('', [Validators.required]),
       content: new FormControl('',[Validators.required]),
       category: new FormControl('',[Validators.required]),
-      author: new FormControl('1',[Validators.required]),
+      author: new FormControl('admin',[Validators.required]),
     })
     
   }
@@ -56,12 +57,11 @@ export class AddPostComponent implements OnInit {
     }
   }
 
+  
+
   onSubmit(){
     const post = this.PostForm.value
     console.log(post)
-
-    const formData = new FormData();
-    formData.append('file', this.PostForm.get('fileSource').value);
 
     this.postService.addPost(post).subscribe((data)=>{
       console.log(data)
@@ -70,4 +70,6 @@ export class AddPostComponent implements OnInit {
       console.log(error)
     })
   }
+
+  
 }
