@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { from } from 'rxjs';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoryComponent } from './components/category/category.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -21,6 +23,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'add_post', component: AddPostComponent},
   { path: 'post', component:PostComponent},
+  { path: 'wishlist', component:WishlistComponent},
   { path: 'postDetail/:id', component:PostDetailComponent }
 ];
 

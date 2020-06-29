@@ -18,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     RegisterComponent,
     PostComponent,
     PostDetailComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,
