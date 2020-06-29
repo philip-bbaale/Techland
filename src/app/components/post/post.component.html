@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div *ngFor="let post of posts">
 
-        <div class="card mb-3" style="border-radius:25px;">
+        <div class="card mb-5 border-secondary" style="border-radius:25px;">
             <div class="card-header" style="border-top-right-radius:25px; border-top-left-radius:25px;">
                 <h2 class="card-text">{{ post.author }}</h2>
             </div>
@@ -19,7 +19,8 @@
                         <!-- <a [routerLink]="['/post',{id: post.id }]"><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a> -->
                         <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" (click)="ViewuserDetail(post.id)"> -->
                         <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" [routerLink]="['/postDetail', 'post.id']"> -->
-                    <a [routerLink]="['postDetail',post.id]" routerLinkActive='active'><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a>
+                        <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active'><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                        <a href=""><img src="assets/icons/icons8-add.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
                     </span>
                 </div>
             </div>

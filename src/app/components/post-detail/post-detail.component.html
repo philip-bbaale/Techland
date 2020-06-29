@@ -1,6 +1,59 @@
 <div class="container mt-5">
 
-<h1>worls</h1>
-<h3>{{ posts.title }}</h3>
+    <div class="card mb-3" style="border-radius:25px;">
+        <div class="card-header" style="border-top-right-radius:25px; border-top-left-radius:25px;">
+            <h2 class="card-text">{{ posts.author }}</h2>
+        </div>
+        
+        <div class="card-body">
+            <img src="{{ posts.image }}" class="card-img-top" alt="{{posts.title}}">
+            <h3 class="card-title mt-2"><span class="badge badge-secondary">{{ posts.title }}</span></h3>
+            <hr class="bg-dark">
+            <p class="card-text">{{ posts.content }}</p>
+        </div>
+        <div class="card-footer" style= "border-bottom-right-radius:25px; border-bottom-left-radius:25px;">
+            <p class="card-text"><small class="text-muted">Created: {{ posts.timestamp | date:'dd.MM.yy à HH:mm'}}</small></p>
+        </div>
+    </div>
+
+    <div class="input-group mb-4 mt-4">
+        <input type="text" class="form-control" placeholder="Add a comment as {{ posts.author }}" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Post</button>
+        </div>
+    </div>
+
+   
+    <div class="card mb-3">
+        <h3 class="card-header">Comments</h3>
+        <div class="card-body">
+
+            <div *ngFor="let comment of posts.comments">
+
+                <div class="card border-dark mb-3">
+                    <div class="card-header"><b>{{ comment.user.username }}</b></div>
+                    <div class="card-body text-dark">
+                      <h5 class="card-title">{{ comment.content }}</h5>
+                      <p class="card-text">Written: {{ comment.posted | date:'dd/MM/yyyy HH:mm'}}</p>
+                    </div>
+        
+                    <div *ngFor="let commentreply of comment.replies" class="m-3"> 
+                        <div class="card border-dark mb-2">
+                            <div class="card-header"><b>{{ commentreply.user.username }}</b> replied to {{ comment.user.username }}</div>
+                            <div class="card-body text-dark">
+                              <h5 class="card-title">{{ commentreply.content }}</h5>
+                              <p class="card-text">Written: {{ commentreply.posted | date:'dd/MM/yyyy HH:mm'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+        
+                </div>
+        
+            </div>
+
+        </div>
+    </div>
+
 
 </div>

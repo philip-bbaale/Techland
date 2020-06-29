@@ -14,14 +14,12 @@ import { ActivatedRoute } from '@angular/router';
 export class PostDetailComponent implements OnInit {
 
   posts:Post;
-  post:1;
 
   constructor(private postService:PostService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params =>{
       const id = +params.get('id')
-      console.log(id)
       this.postService.getPost(id).subscribe(posts => {
         this.posts = posts;
       });
