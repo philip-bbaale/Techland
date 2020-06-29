@@ -1,6 +1,40 @@
 <div class="container mt-5">
 
-<h1>worls</h1>
-<h3>{{ posts.title }}</h3>
+    <div class="card mb-3" style="border-radius:25px;">
+        <div class="card-header" style="border-top-right-radius:25px; border-top-left-radius:25px;">
+            <h2 class="card-text">{{ posts.author }}</h2>
+        </div>
+        
+        <div class="card-body">
+            <img src="{{ posts.image }}" class="card-img-top" alt="{{posts.title}}">
+            <h3 class="card-title mt-2"><span class="badge badge-secondary">{{ posts.title }}</span></h3>
+            <hr class="bg-dark">
+            <p class="card-text">{{ posts.content }}</p>
+        </div>
+        <div class="card-footer" style= "border-bottom-right-radius:25px; border-bottom-left-radius:25px;">
+            <p class="card-text"><small class="text-muted">Created: {{ posts.timestamp | date:'dd.MM.yy à HH:mm'}}</small></p>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Add a comment as {{ posts.author }}" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Post</button>
+        </div>
+    </div>
+
+    <!-- <p>
+        On {{comment.created_on.date }}&nbsp;
+        <b>{{ comment.author }}</b> wrote:
+    </p>
+    <p>{{ comment.body }}</p> -->
+
+    <div *ngFor="let comment of posts.comments">
+        <h4>
+            <b>{{ comment.user.username }}</b> wrote:
+        </h4>
+        <h5>{{ comment.content }}</h5>
+        <p class="text-muted">{{ comment.posted }}</p>
+    </div>
 
 </div>
