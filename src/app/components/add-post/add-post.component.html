@@ -3,40 +3,88 @@
     <div class="card">
         <h3 class="card-header">Make a Post</h3>
 
-        <form class="card-body">
+        <form [formGroup]="PostForm" (ngSubmit)="onSubmit()">
+          <div class="card-body">
             <div class="form-group">
               <label for="exampleFormControlInput1">Post Title</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Header">
+              <input type="text" formControlName="title" class="form-control" id="exampleFormControlInput1" placeholder="Header" >
+              <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                <div *ngIf="f.file.errors.required">Title is required.</div>
+              </div>
             </div>
-            <div class="input-group">
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Select Files</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-                        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-                      </div>
+
+            <!-- <div class="form-group">
+              <label for="file">File</label><br>
+              <div class="form-control" >
+                <ngx-uploadcare-widget
+                formControlName="file"
+                images-only="true"
+                public-key="557ba8f5e78026902bd0"
+                (on-change)="onFileChange($event)">
+              </ngx-uploadcare-widget>
+              </div>
+            </div><br> -->
+
+            <div class="form-group">
+              <label for="file">File</label>
+              <input 
+                  uploadcare-widget
+                  formControlName="file"
+                  id="file" 
+                  type="file" 
+                  class="form-control"
+                  images-only="true"
+                  public-key="557ba8f5e78026902bd0"
+                  (change)="onFileChange($event)">
+              <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                  <div *ngIf="f.file.errors.required">File is required.</div>
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="file">File</label>
+              <input 
+                  formControlName="file"
+                  id="file" 
+                  type="file" 
+                  class="form-control"
+                  (change)="onFileChange($event)">
+              <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                  <div *ngIf="f.file.errors.required">File is required.</div>
+              </div>
+          </div> -->
+            <!-- <div class="form-group">
+              <label for="exampleFormControlInput1">Select Files</label>
+                <div class="custom-file">
+                  <input type="file" id="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" formControlName="image" (change)="onFileChange($event)">
+                  <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
                 </div>
-            </div>
+                <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                  <div *ngIf="f.file.errors.required">File is required.</div>
+                </div>
+            </div> -->
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Caption</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Say something"></textarea>
+              <textarea class="form-control" formControlName="content" id="exampleFormControlTextarea1" rows="3" placeholder="Say something" ></textarea>
+              <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                <div *ngIf="f.file.errors.required">Caption is required.</div>
+              </div>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Category</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="category" >
+                  <option></option>
+                  <option *ngFor="let category of categories">{{ category.name }}</option>
                 </select>
+                <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                  <div *ngIf="f.file.errors.required">Select a category</div>
               </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+            </div>
           </form>
-          <div class="card-footer">
-            <button type="button" class="btn btn-secondary btn-lg">Submit</button>
-          </div>
-
     </div>
     
 </div>

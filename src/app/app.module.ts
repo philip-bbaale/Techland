@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
+import { UcWidgetModule } from 'ngx-uploadcare-widget';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +25,9 @@ import { UsermanagerService } from './usermanager.service';
 export function tokenGetter(){
   return localStorage.getItem('token');
 }
+import { from } from 'rxjs';
+import { PostComponent } from './components/post/post.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 
 @NgModule({
@@ -33,7 +40,9 @@ export function tokenGetter(){
     LoginComponent,
     NavbarComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    PostComponent,
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +61,8 @@ export function tokenGetter(){
     AuthGuardService,
     AuthService,
     UsermanagerService
+    UcWidgetModule,
   ],
   bootstrap: [AppComponent]
-})
+}) 
 export class AppModule { }
