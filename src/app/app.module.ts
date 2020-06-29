@@ -15,6 +15,14 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { UsermanagerService } from './usermanager.service';
+
+export function tokenGetter(){
+  return localStorage.getItem('token');
+}
 import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
@@ -40,6 +48,17 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4200']
+      }
+    })
+  ],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    UsermanagerService,
     UcWidgetModule,
   ],
   bootstrap: [AppComponent]
