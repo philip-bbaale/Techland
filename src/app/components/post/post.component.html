@@ -1,7 +1,10 @@
 <div class="container mt-5">
+    <div class="card-columns">
+
     <div *ngFor="let post of posts">
 
-        <div class="card mb-5 border-secondary" style="border-radius:25px;">
+
+        <div class="card mb-5 border-secondary " style="border-radius:25px;">
             <div class="card-header" style="border-top-right-radius:25px; border-top-left-radius:25px;">
                 <h2 class="card-text">{{ post.author }}</h2>
             </div>
@@ -26,6 +29,8 @@
             </div>
         </div>
 
+
+    </div>
 
     </div>
 </div>
