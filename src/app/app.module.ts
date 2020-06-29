@@ -11,6 +11,17 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';    // add this
+import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';    // add this
+import { JwtModule } from '@auth0/angular-jwt';
+import { UsermanagerService } from './usermanager.service';
+
+export function tokenGetter(){
+  return localStorage.getItem('token');
+}
+
 
 @NgModule({
   declarations: [
@@ -26,9 +37,22 @@ import { RegisterComponent } from './components/register/register.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4200']
+      }
+    })
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    UsermanagerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
