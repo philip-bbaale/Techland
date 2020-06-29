@@ -17,6 +17,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { PostComponent } from './components/post/post.component';
     NavbarComponent,
     ProfileComponent,
     RegisterComponent,
-    PostComponent
+    PostComponent,
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,6 @@ import { PostComponent } from './components/post/post.component';
     ReactiveFormsModule,
     UcWidgetModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
-})
+}) 
 export class AppModule { }

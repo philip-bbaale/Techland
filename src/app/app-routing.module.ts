@@ -7,6 +7,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component'
+import { PostComponent } from './components/post/post.component'
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'add_post', component: AddPostComponent},
+  { path: 'post', component:PostComponent},
+  { path: 'postDetail/:id', component:PostDetailComponent }
 ];
 
 @NgModule({
