@@ -18,6 +18,7 @@ export class PostService {
   postUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/posts/'
   categoryUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/categories/'
   deleteCategoryUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/categories'
+  makeComment:string = 'https://techlandjarvis.herokuapp.com/api/comments/create/'
 
   constructor(private http:HttpClient) { 
   }
