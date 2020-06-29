@@ -19,6 +19,7 @@ import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     ProfileComponent,
     RegisterComponent,
     PostComponent,
-    PostDetailComponent
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,6 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     ReactiveFormsModule,
     UcWidgetModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
-})
+}) 
 export class AppModule { }

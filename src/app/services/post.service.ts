@@ -23,7 +23,9 @@ export class PostService {
   }
   getPosts():Observable<Post[]> {
     return this.http.get<Post[]>(`${this.postUrl}`);
-
+  }
+  getPost(post_id : any):Observable<Post> {
+    return this.http.get<Post>(`${this.postUrl}${post_id}/`);
   }
 
   addPost(post:Post):Observable<Post> {

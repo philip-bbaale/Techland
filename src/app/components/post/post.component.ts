@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
+import { Router } from '@angular/router'; 
+
 
 import { Post } from '../../models/post';
 
@@ -12,7 +14,7 @@ export class PostComponent implements OnInit {
 
   posts:Post[];
 
-  constructor(private postService:PostService) { }
+  constructor(private postService:PostService, private router: Router) { }
 
   ngOnInit() {
     this.postService.getPosts().subscribe(posts => {
@@ -26,4 +28,8 @@ export class PostComponent implements OnInit {
     });
   }
 
+  ViewuserDetail(post_id : any){
+    let url: string = "/postDetail/" + post_id
+         this.router.navigateByUrl(url);
+      }
 }
