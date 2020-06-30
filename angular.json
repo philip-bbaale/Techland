@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Techland"
+    }
+  },
+  "defaultProject": "Techland",
+  "cli": {
+    "analytics": false
+  }
 }
