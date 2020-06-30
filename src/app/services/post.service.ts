@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { Post } from '../models/post'
 import { Category } from '../models/category'
 import { Wishlist } from '../models/wishlist'
+import { Comment } from '../models/comment'
 
 
 const httpOptions = {
@@ -53,8 +54,8 @@ export class PostService {
     return this.http.post<Wishlist>(this.wishlistUrl, wishlist, httpOptions);
   }
 
-  addComment() {
-    return this.http.post(this.makeComment, httpOptions);
+  addComment(comment:Comment):Observable<Comment> {
+    return this.http.post<Comment>(this.makeComment,comment, httpOptions);
   }
 
 }
