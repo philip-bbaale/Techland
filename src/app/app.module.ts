@@ -26,6 +26,7 @@ export function tokenGetter(){
 import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 
 
@@ -42,6 +43,7 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
     RegisterComponent,
     PostComponent,
     PostDetailComponent,
+    WishlistComponent,
     SubscriptionsComponent,
   ],
   imports: [
