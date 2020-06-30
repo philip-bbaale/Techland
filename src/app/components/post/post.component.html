@@ -1,30 +1,41 @@
 <div class="container mt-5">
+    <div class="card-columns">
+
     <div *ngFor="let post of posts">
 
-        <div class="card mb-3" style="border-radius:25px;">
-            <div class="card-header" style="border-top-right-radius:25px; border-top-left-radius:25px;">
-                <h2 class="card-text">{{ post.author }}</h2>
-            </div>
-            
-            <div class="card-body">
-                <img src="{{ post.image }}" class="card-img-top" alt="{{post.title}}">
-                <h3 class="card-title mt-2"><span class="badge badge-secondary">{{ post.title }}</span></h3>
-                <hr class="bg-dark">
-                <p class="card-text">{{ post.content }}</p>
-            </div>
-            <div class="card-footer" style= "border-bottom-right-radius:25px; border-bottom-left-radius:25px;">
-                <p class="card-text"><small class="text-muted">Created: {{ post.timestamp | date:'dd.MM.yy à HH:mm'}}</small></p>
-                <div>
-                    <span class="">
-                        <!-- <a [routerLink]="['/post',{id: post.id }]"><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a> -->
-                        <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" (click)="ViewuserDetail(post.id)"> -->
-                        <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" [routerLink]="['/postDetail', 'post.id']"> -->
-                    <a [routerLink]="['postDetail',post.id]" routerLinkActive='active'><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a>
-                    </span>
+
+            <div class="card mb-5 border-secondary " style="border-radius:25px;">
+                <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active' class="text-dark" style="text-decoration: none;">
+                <div class="card-header" style="border-top-right-radius:25px; border-top-left-radius:25px;">
+                    <h3 class="card-title mt-2"><span class="">{{ post.title }}</span></h3>
+                </div>
+                
+                <div class="card-body">
+                    <img src="{{ post.image }}" class="card-img-top" alt="{{post.title}}">
+                    <h3 class="card-title mt-2"><span class="badge badge-secondary">{{ post.category }}</span></h3>
+                    <hr class="bg-dark">
+                    <p class="card-text">{{ post.content }}</p>
+                </div>
+                </a>
+                <div class="card-footer" style= "border-bottom-right-radius:25px; border-bottom-left-radius:25px;">
+                    <p class="card-text"><small class="text-muted">Created: {{ post.timestamp | date:'dd.MM.yy à HH:mm'}} by {{ post.author }}</small></p>
+                    <div>
+                        <span class="">
+                            <!-- <a [routerLink]="['/post',{id: post.id }]"><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a> -->
+                            <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" (click)="ViewuserDetail(post.id)"> -->
+                            <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" [routerLink]="['/postDetail', 'post.id']"> -->
+                            <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active'><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                            <a href=""><img src="assets/icons/icons8-add.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                            <a href=""><img src="assets/icons/icons8-evergreen.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                            <a href=""><img src="assets/icons/icons8-boring.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                            <a href=""><img src="assets/icons/icons8-empty_flag.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        
+    </div>
 
     </div>
 </div>

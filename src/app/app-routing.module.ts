@@ -9,12 +9,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { PostDetailComponent } from './components/post-detail/post-detail.component'
 import { PostComponent } from './components/post/post.component'
 
 
 const routes: Routes = [
-  { path: 'home', component: HomepageComponent},
+  { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo:"/home", pathMatch:"full"},
   { path: 'category', component: CategoryComponent},
   { path: 'login', component: LoginComponent},
