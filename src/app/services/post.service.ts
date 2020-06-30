@@ -4,6 +4,9 @@ import { Observable } from 'rxjs'
 
 import { Post } from '../models/post'
 import { Category } from '../models/category'
+import { Wishlist } from '../models/wishlist'
+import { Comment } from '../models/comment'
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,6 +21,8 @@ export class PostService {
   postUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/posts/'
   categoryUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/categories/'
   deleteCategoryUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/categories'
+  makeComment:string = 'https://techlandjarvis.herokuapp.com/api/comments/create/'
+  wishlistUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/wishlist/'
 
   constructor(private http:HttpClient) { 
   }
@@ -25,7 +30,7 @@ export class PostService {
     return this.http.get<Post[]>(`${this.postUrl}`);
   }
   getPost(post_id : any):Observable<Post> {
-    return this.http.get<Post>(`${this.postUrl}${post_id}/`);
+    return this.http.get<Post>(`${this.postUrl}${post_id}`);
   }
 
   addPost(post:Post):Observable<Post> {
@@ -44,4 +49,13 @@ export class PostService {
     const url = `${this.deleteCategoryUrl}/${category.id}/`;
     return this.http.delete<Category>(url, httpOptions);
   }
+
+  addToWishlist(wishlist:Wishlist):Observable<Wishlist> {
+    return this.http.post<Wishlist>(this.wishlistUrl, wishlist, httpOptions);
+  }
+
+  addComment(comment:Comment):Observable<Comment> {
+    return this.http.post<Comment>(this.makeComment,comment, httpOptions);
+  }
+
 }
