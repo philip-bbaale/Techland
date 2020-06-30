@@ -36,7 +36,6 @@ export class AddPostComponent implements OnInit {
       this.categories = categories;
     });
 
-    const currentUser = this.auth.isAuthenticated; 
 
     this.PostForm = new FormGroup({
       title: new FormControl('',[Validators.required]),
