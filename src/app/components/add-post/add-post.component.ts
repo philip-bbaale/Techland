@@ -43,7 +43,7 @@ export class AddPostComponent implements OnInit {
       fileSource: new FormControl('', [Validators.required]),
       content: new FormControl('',[Validators.required]),
       category: new FormControl('',[Validators.required]),
-      author_id: new FormControl('wanjiku',[Validators.required]),
+      author_id: new FormControl('',[Validators.required]),
     })
     
   }
@@ -62,6 +62,10 @@ export class AddPostComponent implements OnInit {
     }
   }
 
+  getCurrentUser(){
+    const currentUser = this.auth.currentUserValue; 
+    console.log(currentUser)
+  }
   
 
   onSubmit(){
