@@ -2,17 +2,17 @@
 
     <div class="card mb-3" style="border-radius:25px;">
         <div class="card-header" style="border-top-right-radius:25px; border-top-left-radius:25px;">
-            <h2 class="card-text">{{ posts.author }}</h2>
+            <h2 class="card-text">{{ posts.title }}</h2>
         </div>
         
         <div class="card-body">
             <img src="{{ posts.image }}" class="card-img-top" alt="{{posts.title}}">
-            <h3 class="card-title mt-2"><span class="badge badge-secondary">{{ posts.title }}</span></h3>
+            <h3 class="card-title mt-2"><span class="badge badge-secondary">{{ posts.category }}</span></h3>
             <hr class="bg-dark">
             <p class="card-text">{{ posts.content }}</p>
         </div>
         <div class="card-footer" style= "border-bottom-right-radius:25px; border-bottom-left-radius:25px;">
-            <p class="card-text"><small class="text-muted">Created: {{ posts.timestamp | date:'dd.MM.yy à HH:mm'}}</small></p>
+            <p class="card-text"><small class="text-muted">Created: {{ posts.timestamp | date:'dd.MM.yy à HH:mm'}} by {{ posts.author }}</small></p>
         </div>
     </div>
 

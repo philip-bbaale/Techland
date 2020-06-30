@@ -26,6 +26,7 @@ export function tokenGetter(){
 import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     RegisterComponent,
     PostComponent,
     PostDetailComponent,
+    SubscriptionsComponent,
   ],
   imports: [
     BrowserModule,
