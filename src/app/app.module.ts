@@ -17,7 +17,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
-import { JwtModule } from '@auth0/angular-jwt';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';    // add this
+import { JwtModule, JwtInterceptor } from '@auth0/angular-jwt';
+import { UserService } from './user.service';
+import { ErrorInterceptor } from './error.interceptor';
 import { UsermanagerService } from './usermanager.service';
 import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
@@ -60,9 +63,11 @@ export function tokenGetter(){
     })
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AuthGuardService,
     AuthService,
-    UsermanagerService
+    UserService,
   ],
   bootstrap: [AppComponent]
 }) 
