@@ -40,7 +40,7 @@ export class PostDetailComponent implements OnInit {
     const comment = this.CommentForm.value
     console.log(comment)
 
-    // this.postService.addPost(post).subscribe((data)=>{
+    // this.postService.addComment(comment).subscribe((data)=>{
     //   console.log(data)
     // },
     // (error)=>{
