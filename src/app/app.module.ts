@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
+import { UcWidgetModule } from 'ngx-uploadcare-widget';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,13 +15,18 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';    // add this
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';    // add this
 import { JwtModule, JwtInterceptor } from '@auth0/angular-jwt';
 import { UserService } from './user.service';
 import { ErrorInterceptor } from './error.interceptor';
+import { UsermanagerService } from './usermanager.service';
+import { from } from 'rxjs';
+import { PostComponent } from './components/post/post.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { SubscriptionComponent } from './components/subscription/subscription.component'
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -34,7 +43,11 @@ export function tokenGetter(){
     LoginComponent,
     NavbarComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    PostComponent,
+    PostDetailComponent,
+    WishlistComponent,
+    SubscriptionComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,5 +70,5 @@ export function tokenGetter(){
     UserService,
   ],
   bootstrap: [AppComponent]
-})
+}) 
 export class AppModule { }
