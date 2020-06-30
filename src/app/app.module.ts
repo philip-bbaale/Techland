@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
@@ -21,7 +20,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';    /
 import { JwtModule, JwtInterceptor } from '@auth0/angular-jwt';
 import { UserService } from './user.service';
 import { ErrorInterceptor } from './error.interceptor';
-import { UsermanagerService } from './usermanager.service';
 import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
