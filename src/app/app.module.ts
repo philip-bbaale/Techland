@@ -22,7 +22,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UsermanagerService } from './usermanager.service';
-import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { SubscriptionComponent } from './components/subscription/subscription.component';
 
 
 export function tokenGetter(){
@@ -44,7 +44,7 @@ export function tokenGetter(){
     RegisterComponent,
     PostComponent,
     PostDetailComponent,
-    SubscriptionsComponent,
+    SubscriptionComponent,
   ],
   imports: [
     BrowserModule,
