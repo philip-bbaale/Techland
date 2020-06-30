@@ -17,6 +17,7 @@ export class PostDetailComponent implements OnInit {
 
   posts:Post;
   CommentForm: FormGroup;
+  CommentReplyForm: FormGroup;
 
 
   constructor(private postService:PostService, private route:ActivatedRoute,private fb:FormBuilder) { }
@@ -34,18 +35,33 @@ export class PostDetailComponent implements OnInit {
       comment: new FormControl('',[Validators.required]),
     })
 
+    this.CommentReplyForm = new FormGroup({
+      comment: new FormControl('',[Validators.required]),
+      parent: new FormControl('',[Validators.required]),
+    })
   }
 
   CommentSubmit(){
     const comment = this.CommentForm.value
     console.log(comment)
 
-    // this.postService.addComment(comment).subscribe((data)=>{
-    //   console.log(data)
-    // },
-    // (error)=>{
-    //   console.log(error)
-    // })
+    this.postService.addComment(comment).subscribe((data)=>{
+      console.log(data)
+    },
+    (error)=>{
+      console.log(error)
+    })
   }
 
+  CommentReplySubmit(){
+    const commentReply = this.CommentReplyForm.value
+    console.log(commentReply)
+
+    this.postService.addComment(commentReply).subscribe((data)=>{
+      console.log(data)
+    },
+    (error)=>{
+      console.log(error)
+    })
+  }
 } 
