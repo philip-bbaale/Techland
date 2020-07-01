@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { HttpClientModule } from '@angular/common/http'
@@ -21,7 +21,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UsermanagerService } from './usermanager.service';
-import { from } from 'rxjs';
+import { from, scheduled } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
@@ -70,6 +70,7 @@ export function playerFactory() {
     AuthService,
     UsermanagerService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 }) 
 export class AppModule { }
