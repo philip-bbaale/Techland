@@ -6,6 +6,11 @@ import { AuthService } from '../../auth/auth.service';
 
 import { User } from 'src/app/user';
 import { Category } from '../../models/category'
+import { userInfo } from 'os';
+import { access } from 'fs';
+import { ActivatedRoute } from '@angular/router';
+import { Post } from '../../models/post';
+
 
 
 @Component({
@@ -17,6 +22,7 @@ export class AddPostComponent implements OnInit {
 
   categories:Category[];
   currentUser: User;
+  posts:Post;
 
 
   @Output() addPost: EventEmitter<any> = new EventEmitter();
@@ -27,7 +33,7 @@ export class AddPostComponent implements OnInit {
   category: number;
   PostForm: FormGroup;
 
-  constructor(private fb:FormBuilder, private postService:PostService, private auth: AuthService) { }
+  constructor(private fb:FormBuilder, private postService:PostService, private auth: AuthService, private route:ActivatedRoute) { }
   
 
   ngOnInit(): void {
@@ -37,20 +43,26 @@ export class AddPostComponent implements OnInit {
     });
 
 
-    this.auth.currentUser.subscribe(x => {this.currentUser = x 
+    this.auth.currentUser.subscribe(x => {this.currentUser = x['user_id'] 
     console.log(this.currentUser)
     });
-  
     
     this.PostForm = this.fb.group ({
       title: ['',[Validators.required]],
-      file: [null,[Validators.required]],
+      image: ['',[Validators.required]],
       fileSource: ['', [Validators.required]],
       content: ['',[Validators.required]],
-      category: [1,[Validators.required]],
-      author: [1,[Validators.required]],
+      category: ['',[Validators.required]],
+      author: [this.currentUser,[Validators.required]],
     })
     
+    this.route.paramMap.subscribe(params =>{
+      const id = +params.get('id')
+      this.postService.addToWishlist(id).subscribe(posts => {
+        this.posts = posts;
+      });
+    })
+
   }
 
   get f(){
@@ -67,7 +79,7 @@ export class AddPostComponent implements OnInit {
     }
   }
   
-
+  
   onSubmit(){
     const post = this.PostForm.value
     console.log(post)

@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
 import { Post } from '../../models/post';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
+import { User } from 'src/app/user';
 
 
 @Component({
@@ -18,9 +20,10 @@ export class PostDetailComponent implements OnInit {
   posts:Post;
   CommentForm: FormGroup;
   CommentReplyForm: FormGroup;
+  currentUser: User;
 
 
-  constructor(private postService:PostService, private route:ActivatedRoute,private fb:FormBuilder) { }
+  constructor(private postService:PostService, private route:ActivatedRoute,private fb:FormBuilder, private auth: AuthService) { }
 
   ngOnInit(): void {
 
@@ -31,8 +34,12 @@ export class PostDetailComponent implements OnInit {
       });
     })
     
-    this.CommentForm = new FormGroup({
-      comment: new FormControl('',[Validators.required]),
+    this.auth.currentUser.subscribe(x => {this.currentUser = x['user_id']
+    });
+
+    this.CommentForm = this.fb.group({
+      comment: ['',[Validators.required]],
+      detail: [this.currentUser]
     })
 
     this.CommentReplyForm = new FormGroup({
