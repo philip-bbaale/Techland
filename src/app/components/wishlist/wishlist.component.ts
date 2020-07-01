@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../../services/post.service';
+
+import { Post } from '../../models/post';
 
 @Component({
   selector: 'app-wishlist',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
+  posts:any;
 
-  constructor() { }
+  constructor(private postService:PostService,) { }
 
   ngOnInit(): void {
+    this.postService.getWishlists().subscribe(posts => {
+      this.posts = posts;
+      console.log(posts)
+    }); 
   }
 
 }
