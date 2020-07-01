@@ -2,7 +2,7 @@
 
     <div class="card">
       <h3 class="card-header">Create a Category</h3>
-  
+
       <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
         <div class="form-group card-body">
           <label for="exampleFormControlInput1">Category Title</label>
@@ -13,12 +13,12 @@
         </div>
       </form>
     </div>
-  
+
 
 
       <div class="card mt-5">
           <h3 class="card-header">Delete a Category</h3>
-  
+
           <form [formGroup]="DeleteCategoryForm" (ngSubmit)="deleteCategorySubmit()">
             <div class="card-body">
               <select class="custom-select my-1 mr-sm-2 " id="inlineFormCustomSelectPref" placeholder="Category name" formControlName="name">
@@ -31,5 +31,5 @@
             </div>
           </form>
       </div>
-  
+
   </div>
