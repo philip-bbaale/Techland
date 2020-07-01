@@ -1,10 +1,7 @@
 <div class="container mt-5">
   <h1 style="font-size :40px; font-weight: bold; font-family: 'Cinzel', serif;">Wishlist</h1>
   <div class="card-columns">
-
-  <div *ngFor="let post of posts">
-
-
+  <div *ngFor="let post of posts.posts">
           <div class="card">
               <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active' class="text-dark" style="text-decoration: none;">
               <!-- <div style="background-color: white;" class="card-header" >
@@ -14,7 +11,7 @@
               <div class="card-body">
 
                   <h3 style=" font-size :40px; font-weight: bold; font-family: 'Cinzel', serif;"class="card-title mt-2"><span class="">{{ post.title}}</span></h3>
-                  <h4 class="card-title mt-2"><span style="background-color: #7fffd4; color:black"class="badge badge-secondary">{{ post.category }}</span></h4>
+                  <h4 class="card-title mt-2"><span style="background-color: #7fffd4; color:black"class="badge badge-secondary">{{ post.category.name }}</span></h4>
                   <!-- <hr class="bg-dark"> -->
                   <!-- <p class="card-text">{{ post.content }}</p> -->
               </div>

@@ -29,4 +29,5 @@ export class Post {
         is_flagged:boolean;
 
     }
+
 }
