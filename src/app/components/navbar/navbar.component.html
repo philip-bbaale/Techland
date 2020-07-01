@@ -9,17 +9,18 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;" class="nav-item nav-link" routerLink="about" routerLinkActive='active'>About</a>
-            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="wishlist">
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="wishlist" routerLinkActive='active'>
               <!-- <img src="assets/icons/hrt6.png" width="30" height="30" class="d-inline-block align-top" alt=""> --> Wishlist
             </a>
-            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link " routerLink="subscription">
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link " routerLink="subscription" routerLinkActive='active'>
               <!-- <img src="assets/icons/icons8-subscription.png" width="30" height="30" class="d-inline-block align-top" alt=""> --> Subscriptions
             </a>
           </div>
           <div class="navbar-nav ml-auto mt-2">
             <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="category" routerLinkActive='active'>Categories</a>
-            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="login" routerLinkActive='active'>Login</a>
-            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="register" routerLinkActive='active'>Register</a>
+            <!-- <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="login" routerLinkActive='active'>Login</a>
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="register" routerLinkActive='active'>Register</a> -->
+            <a class="nav-item nav-link" style="cursor: pointer;" *ngIf="currentUser" (click)="logout()">Logout</a>
             <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;" class="nav-item nav-link" routerLink="add_post">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </a>

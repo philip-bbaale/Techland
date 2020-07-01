@@ -19,6 +19,7 @@ const httpOptions = {
 })
 export class PostService {
   postUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/posts/'
+  createPostUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/posts/create'
   categoryUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/categories/'
   deleteCategoryUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/categories'
   makeComment:string = 'https://techlandjarvis.herokuapp.com/api/comments/create/'
@@ -34,7 +35,7 @@ export class PostService {
   }
 
   addPost(post:Post):Observable<Post> {
-    return this.http.post<Post>(this.postUrl, post, httpOptions);
+    return this.http.post<Post>(this.createPostUrl, post, httpOptions);
   }
 
   getCategories():Observable<Category[]> {
