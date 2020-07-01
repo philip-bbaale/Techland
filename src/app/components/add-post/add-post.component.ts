@@ -52,7 +52,7 @@ export class AddPostComponent implements OnInit {
       image: ['',[Validators.required]],
       fileSource: ['', [Validators.required]],
       content: ['',[Validators.required]],
-      category: [1,[Validators.required]],
+      category: ['',[Validators.required]],
       author: [this.currentUser,[Validators.required]],
     })
     
