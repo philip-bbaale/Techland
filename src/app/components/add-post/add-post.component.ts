@@ -4,7 +4,7 @@ import { PostService } from 'src/app/services/post.service';
 import { AuthService } from '../../auth/auth.service';
 
 
-
+import { User } from 'src/app/user';
 import { Category } from '../../models/category'
 
 
@@ -16,6 +16,7 @@ import { Category } from '../../models/category'
 export class AddPostComponent implements OnInit {
 
   categories:Category[];
+  currentUser: User;
 
 
   @Output() addPost: EventEmitter<any> = new EventEmitter();
@@ -27,7 +28,6 @@ export class AddPostComponent implements OnInit {
   PostForm: FormGroup;
 
   constructor(private fb:FormBuilder, private postService:PostService, private auth: AuthService) { }
-
   
 
   ngOnInit(): void {
@@ -36,15 +36,19 @@ export class AddPostComponent implements OnInit {
       this.categories = categories;
     });
 
-    const currentUser = this.auth.isAuthenticated; 
 
-    this.PostForm = new FormGroup({
-      title: new FormControl('',[Validators.required]),
-      file: new FormControl(null,[Validators.required]),
-      fileSource: new FormControl('', [Validators.required]),
-      content: new FormControl('',[Validators.required]),
-      category: new FormControl('',[Validators.required]),
-      author_id: new FormControl('wanjiku',[Validators.required]),
+    this.auth.currentUser.subscribe(x => {this.currentUser = x 
+    console.log(this.currentUser)
+    });
+  
+    
+    this.PostForm = this.fb.group ({
+      title: ['',[Validators.required]],
+      file: [null,[Validators.required]],
+      fileSource: ['', [Validators.required]],
+      content: ['',[Validators.required]],
+      category: [1,[Validators.required]],
+      author: [1,[Validators.required]],
     })
     
   }
@@ -62,7 +66,6 @@ export class AddPostComponent implements OnInit {
       });
     }
   }
-
   
 
   onSubmit(){

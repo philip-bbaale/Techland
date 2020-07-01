@@ -16,18 +16,18 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 
 
 const routes: Routes = [
+  { path: '', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo:"/home", pathMatch:"full"},
-  { path: 'category', component: CategoryComponent},
+  { path: 'category', component: CategoryComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'about', component: AboutComponent},
-  { path: 'profile', component: ProfileComponent},
-  { path: 'add_post', component: AddPostComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'add_post', component: AddPostComponent, canActivate: [AuthGuard] },
   { path: 'post', component:PostComponent},
-  { path: 'wishlist', component:WishlistComponent},
-  { path: 'postDetail/:id', component:PostDetailComponent },
-  { path: 'subscription', component:SubscriptionComponent}
+  { path: 'wishlist', component:WishlistComponent, canActivate: [AuthGuard] },
+  { path: 'postDetail/:id', component:PostDetailComponent , canActivate: [AuthGuard] },
+  { path: 'subscription', component:SubscriptionComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

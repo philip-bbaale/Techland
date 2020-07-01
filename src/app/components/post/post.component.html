@@ -1,24 +1,25 @@
-<div class="container mt-5">
+<div id="posts"class="container-fluid mt-5">
     <div class="card-columns">
 
     <div *ngFor="let post of posts">
 
 
-            <div class="card mb-5 border-secondary " style="border-radius:25px;">
+            <div class="card">
                 <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active' class="text-dark" style="text-decoration: none;">
-                <div class="card-header" style="border-top-right-radius:25px; border-top-left-radius:25px;">
-                    <h3 class="card-title mt-2"><span class="">{{ post.title }}</span></h3>
-                </div>
-                
+                <!-- <div style="background-color: white;" class="card-header" >
+                    <h3 style=" font-size :25px; font-weight: bold; font-family: 'Cinzel', serif;"class="card-title mt-2"><span class="">{{ post.title}}</span></h3>
+                </div> -->
+                <img src="{{ post.image }}" style="width:100%"class="card-img-top" alt="{{post.title}}">
                 <div class="card-body">
-                    <img src="{{ post.image }}" class="card-img-top" alt="{{post.title}}">
-                    <h3 class="card-title mt-2"><span class="badge badge-secondary">{{ post.category }}</span></h3>
-                    <hr class="bg-dark">
-                    <p class="card-text">{{ post.content }}</p>
+                    
+                    <h3 style=" font-size :40px; font-weight: bold; font-family: 'Cinzel', serif;"class="card-title mt-2"><span class="">{{ post.title}}</span></h3>
+                    <h4 class="card-title mt-2"><span style="background-color: #7fffd4; color:black"class="badge badge-secondary">{{ post.category }}</span></h4>
+                    <!-- <hr class="bg-dark"> -->
+                    <!-- <p class="card-text">{{ post.content }}</p> -->
                 </div>
                 </a>
                 <div class="card-footer" style= "border-bottom-right-radius:25px; border-bottom-left-radius:25px;">
-                    <p class="card-text"><small class="text-muted">Created: {{ post.timestamp | date:'dd.MM.yy à HH:mm'}} by {{ post.author }}</small></p>
+                    <p class="card-text"><small class="text-muted"> posted on {{ post.timestamp | date:'dd.MM.yy à HH:mm'}} by {{ post.author }}</small></p>
                     <div>
                         <span class="">
                             <!-- <a [routerLink]="['/post',{id: post.id }]"><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a> -->
@@ -36,6 +37,29 @@
 
         
     </div>
+
+    </div>
+    <div id="about">
+        <h2 style="font-family: 'Cinzel', serif;"class=" text-center ">About</h2>
+        <hr>
+        <!-- <h5 class="text-center ">Software development Motivation App</h5> -->
+        <p class="text-center ">This is a platform where students can get authentic and verified information/inspiration/advice about the tech space. The information will be in the form of videos, audio, or articles/blogs created by the Moringa school community. </p>
+        
+        
+        <h3 class="text-center" style="font-family: 'Cinzel', serif;"id="m2">CONTACTS</h3>
+        <hr>
+        <!-- <div class="row" class="text-center">
+            <div class="col-md-4">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-github" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+            </div>
+            
+        </div> -->
 
     </div>
 </div>

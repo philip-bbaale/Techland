@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { error } from '@angular/compiler/src/util';
-import { UsermanagerService } from 'src/app/usermanager.service';
+import { first } from 'rxjs/operators';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 
@@ -23,10 +23,15 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private usermanager: UsermanagerService
-  ) { }
+    private auth: AuthService
+  ) { 
 
-  ngOnInit(): void {
+    if(this.auth.currentUserValue){
+      this.router.navigate(['/']);
+    }
+  }
+
+  ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -48,26 +53,19 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
+    this.auth.login(this.f.username.value, this.f.password.value)
+        .pipe(first())
+        .subscribe(
+          data => {
+            this.router.navigate([this.returnUrl]);
+          },
+          error => {
+            this.error = error;
+            this.loading = false;
+          }
+        );
 
-    console.log('submitted value', this.loginForm.value);
-    // This is the time for integrete the login
-    const username = this.loginForm.value.username;
-    const password = this.loginForm.value.password;
-    this.usermanager.authenticate(username, password).subscribe(
-      result => {
-        // Here we are storing the token and refresh token in the localstorage
-        localStorage.setItem('token', result['access']);
-        localStorage.setItem('refresh', result['refresh']);
-        this.router.navigate(['/home']);
-      },
-
-      error => {
-        console.log('error');
-        this.loading = false;
-        this.error = error;
-
-      }
-    );
-
+   
+     
   }
 }
