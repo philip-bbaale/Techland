@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
@@ -17,8 +16,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
-import { JwtModule } from '@auth0/angular-jwt';
-import { UsermanagerService } from './usermanager.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';    // add this
+import { JwtModule, JwtInterceptor } from '@auth0/angular-jwt';
+import { UserService } from './user.service';
+import { ErrorInterceptor } from './error.interceptor';
 import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
@@ -60,9 +61,11 @@ export function tokenGetter(){
     })
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AuthGuardService,
     AuthService,
-    UsermanagerService
+    UserService,
   ],
   bootstrap: [AppComponent]
 }) 

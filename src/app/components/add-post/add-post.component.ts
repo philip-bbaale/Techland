@@ -1,8 +1,12 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
+import { AuthService } from '../../auth/auth.service';
+
+
 
 import { Category } from '../../models/category'
+
 
 @Component({
   selector: 'app-add-post',
@@ -22,7 +26,7 @@ export class AddPostComponent implements OnInit {
   category: number;
   PostForm: FormGroup;
 
-  constructor(private fb:FormBuilder, private postService:PostService) { }
+  constructor(private fb:FormBuilder, private postService:PostService, private auth: AuthService) { }
 
   
 
@@ -32,13 +36,14 @@ export class AddPostComponent implements OnInit {
       this.categories = categories;
     });
 
+
     this.PostForm = new FormGroup({
       title: new FormControl('',[Validators.required]),
-      file: new FormControl('',[Validators.required]),
+      file: new FormControl(null,[Validators.required]),
       fileSource: new FormControl('', [Validators.required]),
       content: new FormControl('',[Validators.required]),
       category: new FormControl('',[Validators.required]),
-      author: new FormControl('admin',[Validators.required]),
+      author_id: new FormControl('',[Validators.required]),
     })
     
   }
@@ -57,6 +62,10 @@ export class AddPostComponent implements OnInit {
     }
   }
 
+  getCurrentUser(){
+    const currentUser = this.auth.currentUserValue; 
+    console.log(currentUser)
+  }
   
 
   onSubmit(){
@@ -70,6 +79,6 @@ export class AddPostComponent implements OnInit {
       console.log(error)
     })
   }
-
+  
   
 }

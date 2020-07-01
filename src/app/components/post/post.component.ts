@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 
 import { Post } from '../../models/post';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-post',
@@ -14,7 +15,7 @@ export class PostComponent implements OnInit {
 
   posts:Post[];
 
-  constructor(private postService:PostService, private router: Router) { }
+  constructor(private postService:PostService, private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
     this.postService.getPosts().subscribe(posts => {
@@ -32,4 +33,13 @@ export class PostComponent implements OnInit {
     let url: string = "/postDetail/" + post_id
          this.router.navigateByUrl(url);
       }
+
+  // addToWishlist(post:Post){
+  //   this.postService.addToWishlist(post).subscribe((data)=>{
+  //     console.log(data)
+  //   },
+  //   (error)=>{
+  //     console.log(error)
+  //   })
+  // }
 }
