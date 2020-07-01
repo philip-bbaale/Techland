@@ -4,7 +4,7 @@
     <div *ngFor="let post of posts">
 
 
-            <div class="card">
+            <div class="card border-secondary">
                 <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active' class="text-dark" style="text-decoration: none;">
                 <!-- <div style="background-color: white;" class="card-header" >
                     <h3 style=" font-size :25px; font-weight: bold; font-family: 'Cinzel', serif;"class="card-title mt-2"><span class="">{{ post.title}}</span></h3>
@@ -26,10 +26,10 @@
                             <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" (click)="ViewuserDetail(post.id)"> -->
                             <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" [routerLink]="['/postDetail', 'post.id']"> -->
                             <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active'><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
-                            <a  style="cursor: alias;"><img src="assets/icons/icons8-add.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
-                            <a href=""><img src="assets/icons/icons8-evergreen.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                            <a  style="cursor: alias;" (click)="addToWishlist(post)"><img src="assets/icons/icons8-add.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                            <!-- <a href=""><img src="assets/icons/icons8-evergreen.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
                             <a href=""><img src="assets/icons/icons8-boring.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
-                            <a href=""><img src="assets/icons/icons8-empty_flag.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                            <a href=""><img src="assets/icons/icons8-empty_flag.png" width="30" height="30" alt=""></a>&nbsp;&nbsp; -->
                         </span>
                     </div>
                 </div>
