@@ -1,8 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { LottieModule } from 'ngx-lottie';
-import player from 'lottie-web';
-import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
@@ -19,9 +16,14 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
-import { JwtModule } from '@auth0/angular-jwt';
-import { UsermanagerService } from './usermanager.service';
-import { from, scheduled } from 'rxjs';
+// import { JwtModule } from '@auth0/angular-jwt';
+// import { UsermanagerService } from './usermanager.service';
+// import { from, scheduled } from 'rxjs';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';    // add this
+import { JwtModule, JwtInterceptor } from '@auth0/angular-jwt';
+import { UserService } from './user.service';
+import { ErrorInterceptor } from './error.interceptor';
+import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
@@ -29,9 +31,6 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 
 export function tokenGetter(){
   return localStorage.getItem('token');
-}
-export function playerFactory() {
-  return player;
 }
  
 
@@ -57,7 +56,7 @@ export function playerFactory() {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    LottieModule.forRoot({player: playerFactory}),
+    // LottieModule.forRoot({player: playerFactory}),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -66,9 +65,11 @@ export function playerFactory() {
     })
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AuthGuardService,
     AuthService,
-    UsermanagerService
+    UserService,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
