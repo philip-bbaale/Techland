@@ -23,7 +23,7 @@
             <div class="card-body">
               <select class="custom-select my-1 mr-sm-2 " id="inlineFormCustomSelectPref" placeholder="Category name" formControlName="name">
                 <option>Select Category</option>
-                <option *ngFor="let category of categories">{{ category.name }}</option>
+                <option *ngFor="let category of categories"[value]="category.id">{{ category.name }}</option>
               </select>
             </div>
             <div class="card-footer">
