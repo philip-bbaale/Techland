@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
@@ -28,7 +30,10 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 export function tokenGetter(){
   return localStorage.getItem('token');
 }
-
+export function playerFactory() {
+  return player;
+}
+ 
 
 @NgModule({
   declarations: [
@@ -52,6 +57,7 @@ export function tokenGetter(){
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    LottieModule.forRoot({player: playerFactory}),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

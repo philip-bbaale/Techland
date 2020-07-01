@@ -1,6 +1,6 @@
-<div class="container mt-5">
+<div id="register"class="container mt-5">
     <div class="card">
-        <h3 class="card-header">Join us</h3>
+        <h3 style="background-color:#7fffd4"class="card-header text-center">Join us</h3>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="card-body">
               
@@ -39,13 +39,13 @@
             
             <div class="card-footer">
                 <div class="form-group">
-                    <button [disabled]="loading" class="btn btn-primary">
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    <button [disabled]="loading" class="btn btn-dark">
+                        <span  *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                         Register
                     </button>
                     <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
 
-                    <a routerLink="/login" class="btn btn-link">Login</a>
+                    <a style="color:black" routerLink="/login" class="btn btn-link">Login</a>
                 </div>
             </div>
         </form>

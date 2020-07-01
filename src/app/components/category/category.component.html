@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div id="category" class="container mt-5">
 
     <div class="card">
-      <h3 class="card-header">Create a Category</h3>
+      <h3 style="background-color: #7fffd4;" class="text-center card-header">Create a Category</h3>
 
       <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
         <div class="form-group card-body">
@@ -9,7 +9,7 @@
           <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Category name" formControlName="name">
         </div>
         <div class="card-footer">
-          <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+          <button type="submit" class="btn btn-dark">Submit</button>
         </div>
       </form>
     </div>
@@ -17,7 +17,7 @@
 
 
       <div class="card mt-5">
-          <h3 class="card-header">Delete a Category</h3>
+          <h3 style="background-color: #7fffd4;" class=" text-center card-header">Delete a Category</h3>
 
           <form [formGroup]="DeleteCategoryForm" (ngSubmit)="deleteCategorySubmit()">
             <div class="card-body">
@@ -27,7 +27,7 @@
               </select>
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-secondary btn-lg">Delete</button>
+              <button type="submit" class="btn btn-dark">Delete</button>
             </div>
           </form>
       </div>

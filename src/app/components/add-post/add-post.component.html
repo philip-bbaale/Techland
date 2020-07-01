@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div id="post" class="container mt-5">
 
     <div class="card">
-        <h3 class="card-header">Make a Post</h3>
+        <h3 style="background-color: #7fffd4;"class=" text-center card-header">Make a Post</h3>
 
         <form [formGroup]="PostForm" (ngSubmit)="onSubmit()">
           <div class="card-body">
@@ -82,7 +82,7 @@
               </div>
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+              <button type="submit" class="btn btn-dark">Submit</button>
             </div>
           </form>
     </div>
