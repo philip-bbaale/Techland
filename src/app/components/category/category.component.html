@@ -1,35 +1,38 @@
-<div class="container mt-5">
+<div id="category" class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <h3 style="background-color: #7fffd4;" class="text-center card-header">Create a Category</h3>
 
-    <div class="card">
-      <h3 class="card-header">Create a Category</h3>
-
-      <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
-        <div class="form-group card-body">
-          <label for="exampleFormControlInput1">Category Title</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Category name" formControlName="name">
-        </div>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
-        </div>
-      </form>
-    </div>
-
-
-
-      <div class="card mt-5">
-          <h3 class="card-header">Delete a Category</h3>
-
-          <form [formGroup]="DeleteCategoryForm" (ngSubmit)="deleteCategorySubmit()">
-            <div class="card-body">
-              <select class="custom-select my-1 mr-sm-2 " id="inlineFormCustomSelectPref" placeholder="Category name" formControlName="name">
-                <option>Select Category</option>
-                <option *ngFor="let category of categories"[value]="category.id">{{ category.name }}</option>
-              </select>
-            </div>
-            <div class="card-footer">
-              <button type="submit" class="btn btn-secondary btn-lg">Delete</button>
-            </div>
-          </form>
+        <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+          <div class="form-group card-body">
+            <!-- <label for="exampleFormControlInput1">Category Title</label> -->
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Category name"
+              formControlName="name">
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-dark">Add category</button>
+          </div>
+        </form>
       </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <h3 style="background-color: #7fffd4;" class=" text-center card-header">Delete a Category</h3>
 
+        <form [formGroup]="DeleteCategoryForm" (ngSubmit)="deleteCategorySubmit()">
+          <div class="card-body">
+            <select class="custom-select my-1 mr-sm-2 " id="inlineFormCustomSelectPref" placeholder="Category name"
+              formControlName="name">
+              <option>Select Category</option>
+              <option *ngFor="let category of categories">{{ category.name }}</option>
+            </select>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-dark">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
+</div>

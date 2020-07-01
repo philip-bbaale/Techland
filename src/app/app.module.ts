@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -16,11 +14,14 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
+// import { JwtModule } from '@auth0/angular-jwt';
+// gimport { UsermanagerService } from './usermanager.service';
+import { from, scheduled } from 'rxjs';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';    // add this
 import { JwtModule, JwtInterceptor } from '@auth0/angular-jwt';
 import { UserService } from './user.service';
 import { ErrorInterceptor } from './error.interceptor';
-import { from } from 'rxjs';
+// import { from } from 'rxjs';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
@@ -29,7 +30,7 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 export function tokenGetter(){
   return localStorage.getItem('token');
 }
-
+ 
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ export function tokenGetter(){
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    // LottieModule.forRoot({player: playerFactory}),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -67,6 +69,7 @@ export function tokenGetter(){
     AuthService,
     UserService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 }) 
 export class AppModule { }

@@ -1,35 +1,53 @@
-<div id="login"class="container mt-5">
-    <div class="card">
-        <h3 style="background-color:#7fffd4;font-family: 'Nanum Myeongjo', serif;"class="card-header text-center">Welcome</h3>
-        <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="email" placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Username is required</div>
+<div id="login" class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <ion-button fill="outline" expand="block">
+            
+                <lottie-player style="width: 500px; height: 400px; margin:0 auto;" slot="end" autoplay loop src="https://assets10.lottiefiles.com/packages/lf20_2gjZuP.json" >
+                </lottie-player>
+            </ion-button>
+            <!-- <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_2gjZuP.json" background="transparent"
+                speed="1" style="width: 300px; height: 300px;" loop controls autoplay></lottie-player> -->
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <h4 style="background-color:#7fffd4;font-family: 'Nanum Myeongjo', serif;"
+                    class="card-header text-center">Log in</h4>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="email" placeholder="Username"
+                                formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">Username is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" formControlName="password" class="form-control" id="password"
+                                placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer" style="background-color: white;">
-                <div class="form-group ">
-                    <button [disabled]="loading" class="btn btn-dark">
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                        Login
-                    </button>
-                    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+                    <div class="card-footer" style="background-color: white;">
+                        <div class="form-group ">
+                            <button [disabled]="loading" class="btn btn-dark">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Login
+                            </button>
+                            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
 
 
-                    <a style="color: black;"routerLink="/register" class="btn btn-link">Register</a>
-                </div>
+                            <a style="color: black;" routerLink="/register" class="btn btn-link">Register</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+        
+       
     </div>
 </div>
