@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-light  border-bottom border-danger" style="background-color: #5F8FDF;">
+<nav class="navbar navbar-expand-lg sticky-top navbar-light " style="background-color:white">
     <div class="container">
-        <a class="navbar-brand text-danger" routerLink="/home" >
+        <a class="navbar-brand" style="font-family: 'Cinzel', serif; font-size: 35px;" routerLink="/home" >
           Techland
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,28 +8,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" routerLink="about" routerLinkActive='active'>About</a>
-            <a class="navbar-brand " routerLink="wishlist" routerLinkActive='active'>
-              <img src="assets/icons/hrt6.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;" class="nav-item nav-link" routerLink="about" routerLinkActive='active'>About</a>
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="wishlist">
+              <!-- <img src="assets/icons/hrt6.png" width="30" height="30" class="d-inline-block align-top" alt=""> --> Wishlist
             </a>
-            <a class="nav-item nav-link " routerLink="subscription" routerLinkActive='active'>
-              <img src="assets/icons/icons8-subscription.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link " routerLink="subscription">
+              <!-- <img src="assets/icons/icons8-subscription.png" width="30" height="30" class="d-inline-block align-top" alt=""> --> Subscriptions
             </a>
           </div>
-         
-          <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" routerLink="category" routerLinkActive='active'>Categories</a>
+          <div class="navbar-nav ml-auto mt-2">
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="category" routerLinkActive='active'>Categories</a>
+            <!-- <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="login" routerLinkActive='active'>Login</a>
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;"  class="nav-item nav-link" routerLink="register" routerLinkActive='active'>Register</a> -->
             <a class="nav-item nav-link" style="cursor: pointer;" *ngIf="currentUser" (click)="logout()">Logout</a>
-
-            <a class="navbar-brand " routerLink="add_post">
-                <img src="assets/icons/icons8-add_new.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;" class="nav-item nav-link" routerLink="add_post">
+              <i class="fa fa-plus" aria-hidden="true"></i>
             </a>
-          </div>
-        </div>
-        <div class="navbar-nav ml-auto">
-            <a class="navbar-brand " routerLink="profile">
-                <img src="assets/icons/icons8-cat_profile.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <a style="font-family: 'Nanum Myeongjo', serif; font-size: 18px;" class="nav-item nav-link" routerLink="profile">
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i> 
             </a>
-        </div>
+        </div></div>
     </div>
 </nav>
