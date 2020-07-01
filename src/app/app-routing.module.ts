@@ -17,13 +17,13 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 
 const routes: Routes = [
   { path: '', component: HomepageComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: 'category', component: CategoryComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'about', component: AboutComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'add_post', component: AddPostComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '' },
   { path: 'post', component:PostComponent},
   { path: 'wishlist', component:WishlistComponent, canActivate: [AuthGuard] },
   { path: 'postDetail/:id', component:PostDetailComponent , canActivate: [AuthGuard] },
