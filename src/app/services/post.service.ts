@@ -9,6 +9,8 @@ import { Category } from '../models/category'
 import { Wishlist } from '../models/wishlist'
 import { Comment } from '../models/comment'
 import { User } from 'src/app/user';
+import { Profile } from '../models/profile'
+
 
 
 const httpOptions = {
@@ -27,6 +29,8 @@ export class PostService {
   deleteCategoryUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/categories'
   makeComment:string = 'https://techlandjarvis.herokuapp.com/api/comments/create/'
   wishlistUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/wishlist/'
+  getUserUrl:string = 'https://techlandjarvis.herokuapp.com/auth/api/profiles/'
+  getUserPostsUrl:string = 'https://techlandjarvis.herokuapp.com/posts/api/userpost/'
 
   currentUser: User;
 
@@ -74,4 +78,15 @@ export class PostService {
     return this.http.post<Comment>(this.makeComment,comment, httpOptions);
   }
 
+  getProfile(profile:Profile):Observable<Profile> {
+    this.auth.currentUser.subscribe(x => {this.currentUser = x['user_id'] 
+    });
+    return this.http.get<Profile>(`${this.getUserUrl}${this.currentUser}/`);
+  }
+
+  getUserPosts():Observable<Post[]> {
+    this.auth.currentUser.subscribe(x => {this.currentUser = x['user_id'] 
+    });
+    return this.http.get<Post[]>(`${this.getUserPostsUrl}${this.currentUser}`);
+  }
 }

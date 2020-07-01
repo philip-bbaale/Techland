@@ -2,45 +2,92 @@
     <div class="row" style=" padding:0; margin:0; top:0; left:0; width: 100%; height: 100vh;">
         <div class="col-md-3" style="background-color: #7fffd4;">
             <div class="mt-4">
-                <img src="assets/profilepics/default.jpg" style="width: 250px; height: 250px; border-radius: 50%;" alt="Profile" class="img-thumbnail">
+                <img src="{{profile.image}}" style="width: 250px; height: 250px; border-radius: 50%;" alt="Profile" class="img-thumbnail">
                 <br><br>
                 <!-- <p class="text">Admin</p> -->
                 <h4 >
-                    <span style="font-weight: bold;">pip_bbaale</span><br>
+                    <span style="font-weight: bold;">{{ profile.user }}</span><br>
                    
                 </h4>
-                <p >Email: namugera.philip@gmail.com</p>
+                <p >Email: {{ profile.email }}</p>
                 <hr class="bg-secondary">
                 <p style="font-weight:bold;">Bio</p>
                 <h5 style="font-family: 'Nanum Myeongjo', serif;font-size: 18px;">
-                    A biography, or simply bio, is a detailed description of a person's life. It involves more than just the basic facts like education, work, relationships, and death; it portrays a person's experience of these life events.
+                    {{ profile.bio }}
                 </h5>
-                <button class="btn btn-dark mt-3 mb-3">Edit profile</button>
+                <p>
+                    <a class="btn btn-outline-light text-dark mt-3 mb-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Edit profile
+                    </a>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                    <div class="card mb-3">
+                        <form>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="username">username</label>
+                                    <input type="text" class="form-control"  placeholder="username" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="bio">bio</label>
+                                    <input type="text" class="form-control"  placeholder="bio" >
+                                </div>
+                                
+                            </div>
+                            <div class="card-footer" style="background-color: white;">
+                                <div class="form-group ">
+                                    <button  class="btn btn-outline-success">Edit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
             </div>
         </div>
 
-        <!-- <div class="col-md-9 ">
+        <div class="col-md-9 ">
 
             <div class="container mt-5">
 
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h2 class="card-text">pip_bbaale</h2>
-                    </div>
-                    
-                    <div class="card-body">
-                        <img src="assets/images/pic1.jpg" class="card-img-top" alt="Post">
-                        <h3 class="card-title mt-2"><span class="badge badge-secondary">Post title</span></h3>
-                        <p class="card-text">Post Caption. Post Caption. Post Caption. Post Caption.</p>
-                    </div>
-                    <div class="card-footer">
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
+                <div class="card-columns">
+
+                    <div *ngFor="let post of posts">
+                
+                
+                            <div class="card border-secondary">
+                                <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active' class="text-dark" style="text-decoration: none;">
+                                <!-- <div style="background-color: white;" class="card-header" >
+                                    <h3 style=" font-size :25px; font-weight: bold; font-family: 'Cinzel', serif;"class="card-title mt-2"><span class="">{{ post.title}}</span></h3>
+                                </div> -->
+                                <img src="{{ post.image }}" style="width:100%"class="card-img-top" alt="{{post.title}}">
+                                <div class="card-body">
+                                    
+                                    <h3 style=" font-size :40px; font-weight: bold; font-family: 'Cinzel', serif;"class="card-title mt-2"><span class="">{{ post.title}}</span></h3>
+                                    <h4 class="card-title mt-2"><span style="background-color: #7fffd4; color:black"class="badge badge-secondary">{{ post.category }}</span></h4>
+                                    <!-- <hr class="bg-dark"> -->
+                                    <!-- <p class="card-text">{{ post.content }}</p> -->
+                                </div>
+                                </a>
+                                <div class="card-footer" style= "border-bottom-right-radius:25px; border-bottom-left-radius:25px;">
+                                    <p class="card-text"><small class="text-muted"> posted on {{ post.timestamp | date:'dd.MM.yy à HH:mm'}} by {{ post.author }}</small></p>
+                                    <div>
+                                        <span class="">
+                                            <!-- <a [routerLink]="['/post',{id: post.id }]"><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a> -->
+                                            <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" (click)="ViewuserDetail(post.id)"> -->
+                                            <!-- <img src="assets/icons/icons8-comments.png" width="30" height="30" alt="" [routerLink]="['/postDetail', 'post.id']"> -->
+                                            <a [routerLink]="['/postDetail',post.id]" routerLinkActive='active'><img src="assets/icons/icons8-comments.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                                            <!-- <a  style="cursor: alias;" (click)="addToWishlist(post)"><img src="assets/icons/icons8-add.png" width="30" height="30" alt=""></a>&nbsp;&nbsp; -->
+                                            <!-- <a href=""><img src="assets/icons/icons8-evergreen.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                                            <a href=""><img src="assets/icons/icons8-boring.png" width="30" height="30" alt=""></a>&nbsp;&nbsp;
+                                            <a href=""><img src="assets/icons/icons8-empty_flag.png" width="30" height="30" alt=""></a>&nbsp;&nbsp; -->
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
 
             </div>
             
-        </div> -->
+        </div>
 
     </div>
 </div>

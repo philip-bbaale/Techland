@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../../services/post.service';
+
+import { Profile } from '../../models/profile';
+import { Post } from '../../models/post';
+
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  profile:Profile;
+  posts:Post[];
+
+  constructor(private postService:PostService) { }
 
   ngOnInit(): void {
+    this.postService.getProfile(this.profile).subscribe(profile => {
+      this.profile = profile;
+      console.log(profile)
+    });
+
+    this.postService.getUserPosts().subscribe(posts => {
+      this.posts = posts;
+      console.log(posts)
+    }); 
+
   }
 
+
+  
 }

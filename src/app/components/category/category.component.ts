@@ -23,8 +23,8 @@ export class CategoryComponent implements OnInit {
       name: new FormControl('',[Validators.required]),
     })
 
-    this.DeleteCategoryForm = new FormGroup({
-      name: new FormControl('',[Validators.required]),
+    this.DeleteCategoryForm = this.fb.group({
+      name:[,[Validators.required]],
     })
 
     this.postService.getCategories().subscribe(categories => {

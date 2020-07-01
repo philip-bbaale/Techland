@@ -9,7 +9,7 @@ import { Post } from '../../models/post';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
-  posts:Post[];
+  posts:any;
 
   constructor(private postService:PostService,) { }
 
