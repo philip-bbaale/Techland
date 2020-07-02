@@ -11,6 +11,9 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/architect": "^0.1000.1",
+    "@angular-devkit/core": "^10.0.1",
+    "@angular-devkit/schematics": "^10.0.1",
     "@angular/animations": "~9.1.0",
     "@angular/common": "~9.1.0",
     "@angular/compiler": "~9.1.0",
