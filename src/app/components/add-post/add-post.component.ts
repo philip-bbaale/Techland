@@ -50,19 +50,12 @@ export class AddPostComponent implements OnInit {
     this.PostForm = this.fb.group ({
       title: ['',[Validators.required]],
       image: ['',[Validators.required]],
-      fileSource: ['', [Validators.required]],
       content: ['',[Validators.required]],
       category: ['',[Validators.required]],
       author: [this.currentUser,[Validators.required]],
     })
     
-    this.route.paramMap.subscribe(params =>{
-      const id = +params.get('id')
-      this.postService.addToWishlist(id).subscribe(posts => {
-        this.posts = posts;
-      });
-    })
-
+  
   }
 
   get f(){
@@ -73,8 +66,9 @@ export class AddPostComponent implements OnInit {
   
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      console.log(file)
       this.PostForm.patchValue({
-        fileSource: file
+        image: file
       });
     }
   }
