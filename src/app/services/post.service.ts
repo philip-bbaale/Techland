@@ -44,7 +44,7 @@ export class PostService {
     return this.http.get<Post>(`${this.postUrl}${post_id}`);
   }
 
-  addPost(post:Post):Observable<Post> {
+  addPost(post:any):Observable<Post> {
     return this.http.post<Post>(this.createPostUrl, post, httpOptions);
   }
 
